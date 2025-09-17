@@ -1,0 +1,31 @@
+function App(){
+  return <div>
+    <Header/>
+    <Button/>
+      <h1>REACT</h1>
+  </div>
+}
+//NOTE create a component for button which shows button ui
+function Button(){
+  return (
+    <button>LOGIN</button>
+  )
+}
+function Header(){
+  return (
+    <div>
+      <h1>Blinkit</h1>
+      <SearchInput/>
+    </div>
+  )
+}
+
+function SearchInput(){
+  return (
+    <div>
+      <input type="text"/>
+    </div>
+  )
+}
+//note create a header and searchINput component use the search input in the header and connect header with app
+export default App

@@ -1,0 +1,33 @@
+function App() {
+  return (
+    <div>
+      <Card/>
+      {/* passing props in the button */}
+      <Button title="REGISTER" color='red' />
+      <Button title="Login" color='green'/>
+      <Button title="CONTACT US" color='orange' />
+    </div>
+  );
+}
+
+//NOTE accepting the props in the button component using destructuring.
+
+function Button({ title ,color}) {
+  console.log(title,color)
+  return <button style={{backgroundColor:color}}>{title}</button>;
+}
+
+function Card({img,title ,price}){
+  return ( <div>
+    <img src="https://www.heroui.com/images/fruit-1.jpeg"/>
+    <h1>Lemon</h1>
+    <p>$3</p>
+  </div> )
+}
+export default App;
+
+
+//NOTE props are used to share data between parent  ▶️ child 
+
+//NOTE When we call a Component we can pass the props in key  = value  pair in the opening tag of the component 
+//NOTE we can accept the props using destructuring in the component

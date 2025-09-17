@@ -1,0 +1,20 @@
+export default function App(){
+  const technology = 'REACT'
+  return (
+    <div>
+    <div style={{color:'red',backgroundColor:'green'}} className='heading'>{technology}</div>
+    <input maxLength={10}/>
+
+    </div>
+  )
+}
+
+
+// style="background-color:red"
+//maxlength='10'
+
+//IN JSX 
+//class should be used as className
+//inline style={{color:'red'}} used a object 
+//attributes names should be in the camelCase
+//number should be pass with {}
