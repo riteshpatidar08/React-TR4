@@ -1,8 +1,34 @@
 function App() {
+  const handleClick = () => {
+    console.log('login button is clicked');
+  };
+  const handlePrintName = (name) => {
+    console.log(name);
+  };
   return (
     <div>
+      {/* inline handler function   */}
+      <button
+        onClick={() => {
+          console.log('hi');
+        }}
+      >
+        CLICK
+      </button>
 
+      <button onClick={handleClick}>Login</button>
+
+      {/* 3rd case pass argument in the handler */}
+      <button
+        onClick={() => {
+          handlePrintName('test');
+        }}
+      >
+        PrintName
+      </button>
     </div>
-  )
+  );
 }
 export default App;
+
+//NOTE onClick and onChange // we donot use addeventlister
