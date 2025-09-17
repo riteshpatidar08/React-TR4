@@ -1,23 +1,28 @@
-import React from 'react';
-
+import React from 'react'
+import { useState } from 'react'
 function App() {
-  const products = ['mobile', 'ac', 'ps5', ';laptop'];
+const [list , setList] = useState([1,2,3,4,5])
+const [input , setInput] = useState('');
+
+const handleChange = (e) => {
+  console.log(e.target.value)
+  setInput(e.target.value)
+}
+console.log(list)
   return (
     <div>
-      <h1>LIST RENDERING</h1>
-      <h1>{products[0]}</h1>
-      {products.map((product, index) => {
-        console.log(product);
-        return <h2 key={index}>{product}</h2>;
-      })}
-      {/* variation second when you do not have any console inside the map callback */}
-      {products.map((product, index) => (
-        <div key={index}>
-          <h2>{product}</h2>
-        </div>
-      ))}
+    {list.map((el)=>(
+      <h1>{el}</h1>
+    ))}
+    <form>
+      <input onChange={handleChange} type='text' placeholder='Add list item' name='text'/>
+      <button>Add</button>
+    </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
+
+//TASK CREATE A LIST AND SHOW ON THE UI TAKES INPUT FIELD AND A ADD BUTTON , GET THE INPUT VALUE AND ADD INTO THE LIST :
