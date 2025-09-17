@@ -1,0 +1,51 @@
+import { useState } from 'react';
+
+function App() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleEmailChange = (e) => {
+    console.log(e.target.value);
+    setEmail(e.target.value);
+  };
+  const handlePasswordChange = (e) =>  {
+    console.log(e.target.value);
+    setPassword(e.target.value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const data = {
+      email : email ,
+      password : password
+    }
+    console.log(data)
+  }
+  return (
+    <div>
+      <h1>FORM HANDLING IN REACT</h1>
+      <p>READ THE VALUES OF INPUT FIELD AND SUBMIT THE VALUE AS AN OBJECT</p>
+      <form onSubmit={handleSubmit}>
+        <label>Email</label>
+        <input
+          onChange={handleEmailChange}
+          type="email"
+          name="email"
+          value={email}
+        />
+        <label>Password</label>
+        <input
+          onChange={handlePasswordChange}
+          type="password"
+          name="password"
+          value={password}
+        />
+        <button>Submit</button>
+      </form>
+
+      <p>Email : {email}</p>
+      <p>Password : {password}</p>
+    </div>
+  );
+}
+
+export default App;
