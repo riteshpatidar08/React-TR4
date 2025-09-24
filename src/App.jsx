@@ -5,16 +5,21 @@ import ServicePage from './pages/ServicePage';
 import Blogspage from './pages/Blogspage';
 import Navbar from './components/Navbar';
 import Loginpage from './pages/Loginpage';
+import ProductPage from './pages/ProductPage';
+import ProductDetail from './pages/ProductDetail';
 function App() {
   return (
     <div>
       {/* setting up the routing  */}
-      <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/services" element={<ServicePage />} />
+        <Route path="/products" element={<ProductPage />} />
+        {/* //dynamic routes */}
+        <Route path="/products/:name" element={<ProductDetail />} />
         <Route path="/blogs" element={<Blogspage />} />
-        <Route path='/login' element={<Loginpage/>}/>
+        <Route path="/login" element={<Loginpage />} />
       </Routes>
     </div>
   );
