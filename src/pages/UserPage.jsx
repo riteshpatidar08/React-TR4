@@ -13,7 +13,7 @@ function UserPage() {
           className="text-2xl p-6 border rounded-2xl font-bold flex flex-col gap-3"
         >
           <h1>{user.name}</h1>
-          <Link to="" className="text-lg font-semibold text-sky-300 underline">
+          <Link to={`/users/${user.id}`} className="text-lg font-semibold text-sky-300 underline">
             See Details
           </Link>
         </div>
