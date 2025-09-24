@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Loginpage from './pages/Loginpage';
 import ProductPage from './pages/ProductPage';
 import ProductDetail from './pages/ProductDetail';
+import UserPage from './pages/UserPage';
 function App() {
   return (
     <div>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/products/:name" element={<ProductDetail />} />
         <Route path="/blogs" element={<Blogspage />} />
         <Route path="/login" element={<Loginpage />} />
+        <Route path='/users' element={<UserPage/>}/>
       </Routes>
     </div>
   );
