@@ -14,4 +14,4 @@ function Navbar() {
 
 export default Navbar;
 
-//on homepage create a link logout when i click on the logut navigate to /login
+//on homepage create a link logout when i click on the logout navigate to /login
