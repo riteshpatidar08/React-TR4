@@ -6,7 +6,7 @@
  If no user → Show "Please log in"
 
  If user exists:
- Show "Good morning/afternoon/evening" based on current time
+ Show "Hi username"
  If user is premium → Show a gold star ⭐ badge
  If user has unread messages → Show message count in red
  If user's account is new (< 7 days) → Show "New Member" badge
