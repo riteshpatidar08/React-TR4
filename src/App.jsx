@@ -9,6 +9,7 @@ import ProductPage from './pages/ProductPage';
 import ProductDetail from './pages/ProductDetail';
 import UserPage from './pages/UserPage';
 import Dashboard from './pages/Dashboard';
+import Overviewpage from './pages/Overviewpage';
 function App() {
   return (
     <div>
@@ -23,7 +24,9 @@ function App() {
         <Route path="/blogs" element={<Blogspage />} />
         <Route path="/login" element={<Loginpage />} />
         <Route path="/users" element={<UserPage />} />
-        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}>
+        <Route path='overview' element={<Overviewpage/>}/>
+        </Route>
       </Routes>
     </div>
   );
