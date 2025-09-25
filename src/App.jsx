@@ -11,25 +11,31 @@ import UserPage from './pages/UserPage';
 import Dashboard from './pages/Dashboard';
 import Overviewpage from './pages/Overviewpage';
 import IntegrationPage from './pages/IntegrationPage';
+import NotFoundPage from './pages/NotFoundPage';
+import ProtectedRoutes from './components/ProtectedRoutes';
 function App() {
   return (
     <div>
       {/* setting up the routing  */}
-      <Navbar />
+     
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<ProtectedRoutes><Homepage /></ProtectedRoutes>} />
         <Route path="/services" element={<ServicePage />} />
         <Route path="/products" element={<ProductPage />} />
-        {/* //dynamic routes */}
+        {/* dynamic routes */}
         <Route path="/products/:name" element={<ProductDetail />} />
+
         <Route path="/blogs" element={<Blogspage />} />
         <Route path="/login" element={<Loginpage />} />
         <Route path="/users" element={<UserPage />} />
-        <Route path='/dashboard' element={<Dashboard/>}>
-        <Route index  element={<Overviewpage/>}/>
-        <Route path='overview' element={<Overviewpage/>}/>
-        <Route path='integrations' element={<IntegrationPage/>}/>
+        {/* nested routing */}
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<Overviewpage />} />
+          <Route path="overview" element={<Overviewpage />} />
+          <Route path="integrations" element={<IntegrationPage />} />
         </Route>
+        {/* not found route */}
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
