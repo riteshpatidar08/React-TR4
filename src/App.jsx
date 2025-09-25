@@ -17,22 +17,26 @@ function App() {
   return (
     <div>
       {/* setting up the routing  */}
-     
-      <Routes>
-        <Route path="/" element={<ProtectedRoutes><Homepage /></ProtectedRoutes>} />
-        <Route path="/services" element={<ServicePage />} />
-        <Route path="/products" element={<ProductPage />} />
-        {/* dynamic routes */}
-        <Route path="/products/:name" element={<ProductDetail />} />
 
-        <Route path="/blogs" element={<Blogspage />} />
+      <Routes>
         <Route path="/login" element={<Loginpage />} />
-        <Route path="/users" element={<UserPage />} />
-        {/* nested routing */}
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route index element={<Overviewpage />} />
-          <Route path="overview" element={<Overviewpage />} />
-          <Route path="integrations" element={<IntegrationPage />} />
+
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/services" element={<ServicePage />} />
+          <Route path="/products" element={<ProductPage />} />
+          {/* dynamic routes */}
+          <Route path="/products/:name" element={<ProductDetail />} />
+
+          <Route path="/blogs" element={<Blogspage />} />
+
+          <Route path="/users" element={<UserPage />} />
+          {/* nested routing */}
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<Overviewpage />} />
+            <Route path="overview" element={<Overviewpage />} />
+            <Route path="integrations" element={<IntegrationPage />} />
+          </Route>
         </Route>
         {/* not found route */}
         <Route path="*" element={<NotFoundPage />} />
