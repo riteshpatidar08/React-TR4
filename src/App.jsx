@@ -15,6 +15,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import ProtectedRoutes from './components/ProtectedRoutes';
 function App() {
   return (
+    //to access the protected routes make the isLoggedIN variable true in the protectEDroUTES FILE
     <div>
       {/* setting up the routing  */}
 
