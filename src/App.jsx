@@ -10,6 +10,7 @@ import ProductDetail from './pages/ProductDetail';
 import UserPage from './pages/UserPage';
 import Dashboard from './pages/Dashboard';
 import Overviewpage from './pages/Overviewpage';
+import IntegrationPage from './pages/IntegrationPage';
 function App() {
   return (
     <div>
@@ -25,7 +26,9 @@ function App() {
         <Route path="/login" element={<Loginpage />} />
         <Route path="/users" element={<UserPage />} />
         <Route path='/dashboard' element={<Dashboard/>}>
+        <Route index  element={<Overviewpage/>}/>
         <Route path='overview' element={<Overviewpage/>}/>
+        <Route path='integrations' element={<IntegrationPage/>}/>
         </Route>
       </Routes>
     </div>
