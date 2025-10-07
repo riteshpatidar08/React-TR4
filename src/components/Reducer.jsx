@@ -11,23 +11,32 @@ function Reducer() {
     console.log(state);
     console.log(action);
     if (action.type === 'Increment') {
-      return { count: state.count + 1 };
-    }else {
-        return state
+        
+      return { count: state.count + action.payload };
+    } else {
+      return state;
     }
   };
 
   const [state, dispatch] = useReducer(countReducer, initialState);
   console.log(state, dispatch);
+
   const handleIncrement = () => {
-    dispatch({ type: 'Increment' });
+    dispatch({ type: 'Increment' , payload : 5});
   };
+
   return (
     <div>
       <h1>{state.count}</h1>
-      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleIncrement}>Increment +5</button>
     </div>
   );
 }
 
 export default Reducer;
+
+// const inititalState = {
+//     data : null ,
+//     loading : false ,
+//     error : null
+// }
