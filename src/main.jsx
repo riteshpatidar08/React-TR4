@@ -5,15 +5,15 @@ import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import { DataProvider } from './context/DataContext.jsx';
 import { ApiProvider } from './context/ApiContext.jsx';
+import { Provider } from 'react-redux';
+import store from './redux/store/store.js';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <DataProvider>
-        <ApiProvider>
-        <App />
-        </ApiProvider>
+    <Provider store={store}>
+    <App />
+    </Provider>
    
-      </DataProvider>
     </BrowserRouter>
   </StrictMode>
 );
