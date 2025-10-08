@@ -19,7 +19,6 @@
 
 // export default App;
 
-import React from 'react';
 import Reducer from './components/Reducer';
 
 function App() {
@@ -38,7 +37,7 @@ function App() {
         <li>Action Object</li>
         <li>Dispatch Function</li>
       </ul>
-      <Reducer/>
+      <Reducer />
     </div>
   );
 }
