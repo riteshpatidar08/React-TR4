@@ -1,43 +1,23 @@
-// import React  ,{useState} from 'react';
-// import Header from './components/Header';
-// import Profile from './components/Profile';
-
-// function App() {
-//     const [userData,setUserData] = useState('test')
-//     console.log('app component')
-//   return (
-//     <div>
-//       <h1 className="text-center font-bold text-3xl m-10">
-//         PROPS DRILLING IN REACT
-//       </h1>
-//       <Header userData = {userData}/>
-//       <Profile userData={userData}/>
-//       <button onClick={()=>setUserData('newtest')}>CLick</button>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-import Reducer from './components/Reducer';
-
+import React from 'react';
+import { useSelector ,useDispatch } from 'react-redux';
+import { increment,decrement } from './redux/slices/CounterSlice';
 function App() {
+ const {count} = useSelector((state)=>{
+  console.log(state)
+return state.count
+  })
+  const dispatch = useDispatch()
   return (
-    <div className="text-center">
-      <h1 className="font-bold text-3xl m-4 text-center">Use Reducer Hook</h1>
-      <p className=" text-center text-2xl text-red-500 font-bold   ">
-        Alternative Hook for State Management
-      </p>
-      <h1 className="text-xl font-bold text-center m-3">
-        💡Terminology for useReducer Hook to remember
-      </h1>
-      <ul className="font-semibold flex flex-col gap-4 text-4xl text-emerald-600">
-        <li>InitialState</li>
-        <li>Reducer Function</li>
-        <li>Action Object</li>
-        <li>Dispatch Function</li>
-      </ul>
-      <Reducer />
+    <div className="h-screen gap-10 flex justify-center m-20 items-center">
+      <h1 className="text-2xl font-bold">{count}</h1>
+      <button onClick={()=>{
+        dispatch(increment())
+      }} className="px-10 py-2 bg-yellow-600 text-2xl font-bold text-white">
+        Increment
+      </button>
+      <button className="px-10 py-2 bg-yellow-600 text-2xl font-bold text-white">
+        Decrement
+      </button>
     </div>
   );
 }
