@@ -4,6 +4,7 @@ export const ApiContext = createContext();
 
 export const ApiProvider = ({ children }) => {
   const [todos, setTodos] = useState([]);
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -13,6 +14,7 @@ export const ApiProvider = ({ children }) => {
       setTodos(data);
     } catch (error) {}
   };
+
   return (
     <ApiContext.Provider value={{ fetchData, todos }}>
       {children}
