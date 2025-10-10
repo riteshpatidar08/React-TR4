@@ -18,12 +18,11 @@ console.log(counterSlice);
 export default counterSlice.reducer;
 export const { increment, decrement } = counterSlice.actions;
 
-
 //TASK convert the useReducer api calling logic in to redux toolkit
 
-//todoslice 
+//todoslice
 //initial state {loading : falsee , todos : null  , error : null}
-//reducers : => pending , fulfilled , rejected 
+//reducers : => pending , fulfilled , rejected
 //export default todoSlice.reducer
-//export const {pending , fulfilled , rejected} = todoSlice.actions 
+//export const {pending , fulfilled , rejected} = todoSlice.actions
 //connect the todoReducer with store
