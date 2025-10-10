@@ -1,5 +1,5 @@
 //common js modules
 
 const firstName = 'test';
-
-module.exports = firstName;
+const age = 34
+    module.exports = {firstName,age};
