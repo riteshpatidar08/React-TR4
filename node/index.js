@@ -22,22 +22,38 @@ const fs = require('fs');
 
 //fs module return two types => synchronous and asynchronous
 
-//READING A FILE 
+//READING A FILE
 
 //NOTE SYNCRONOUS VERSION
-console.log('reading file started ...')
-const data = fs.readFileSync('./read.txt','utf-8')
-console.log(data)
-console.log('reading file ended')
+console.log('reading file started ...');
+const data = fs.readFileSync('./read.txt', 'utf-8');
+console.log(data);
+console.log('reading file ended');
 
+//async version
+console.log('async file reading started..');
+fs.readFile('./read.txt', 'utf-8', (err, data) => {
+  console.log(data);
+});
+console.log('async file reading ended..');
 
-//async version 
-console.log('async file reading started..')
-fs.readFile('./read.txt','utf-8',(err,data)=>{
-console.log(data)
-})
-console.log('async file reading ended..')
+const filepath = ['file1.txt', 'file2.txt'];
 
-//note filepath = ['file1.txt','file2.txt'] ;
-
+filepath.forEach((path, index) => {
+  fs.readFile(path, 'utf-8', (err, data) => {
+    console.log(data);
+    fs.writeFile(`CopyFile${index + 1}.txt`, data, () => {
+      console.log('success');
+    });
+  });
+});
 // multipleFilesRead(filepath)
+
+//Async version
+
+fs.writeFile('newfile.txt', 'THIS IS NEW FILE', () => {
+  console.log('Write file successfull');
+});
+
+// file1 => copyFile1.txt
+// file2 => copyfile2.txt
