@@ -25,3 +25,9 @@ server.listen(3000, () => {
 });
 
 //note npm i -g nodemon
+
+
+//job portel ui 
+
+//login page , register , homepage job show the jobs 
+//role jobseeker , recruiter
