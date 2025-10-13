@@ -3,8 +3,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
-//middleware => middleware are the fn which we can use in the express , middleware have access to the req , and response object
-//here the use of express.json() middleware is that when the data comes from the client in the req it comes in buffer  or in chunks what .json() does it parse the data into an js object then set this data on req.body property , so that can be accessed in the api routes
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -37,8 +36,27 @@ app.get('/news/:id', (req, res) => {
     data: singleNews,
   });
 });
+app.post('/news', (req, res) => {
+  console.log(req.body);
+  const { title, description, author, date } = req.body;
 
+  //calculate id for the incoming data :
+  const allNews = fs.readFileSync('news.json', 'utf-8');
+  const parseNews = JSON.parse(allNews);
+  console.log(parseNews);
+  const id = parseNews[parseNews.length - 1].id + 1;
+  console.log(id);
+  const newArticle = { id, author, date, title, description };
+  console.log(newArticle);
+  parseNews.push(newArticle);
+  fs.writeFile('news.json', JSON.stringify(parseNews), () => {
+    res.json({
+      message: 'success',
+      data: newArticle,
+    });
+  });
+});
 
-app.listen(3000,()=>{
-    console.log('Server is running on 3000')
-})
+app.listen(3000, () => {
+  console.log('Server is running on 3000');
+});
