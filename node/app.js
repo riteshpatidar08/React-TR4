@@ -26,6 +26,15 @@ function test(req, res, next) {
   next();
 }
 
+function CheckApiKey(req,res,next){
+    const apiKey = req.params.apikey
+    if(apiKey=== 'test123'){
+        next()
+    }else{
+        res.send('Invalid Api key')
+    }
+}
+
 app.get('/', test, (req, res) => {
   console.log(req.body);
   res.send('HOME');
@@ -34,6 +43,11 @@ app.get('/', test, (req, res) => {
 app.post('/users', (req, res) => {
   console.log(req.body);
 });
+
+
+app.get('/movies/:apikey', CheckApiKey, (req,res)=>{
+    res.send('MOVIES')
+})
 
 app.listen(3000, () => {
   console.log('server is running');
