@@ -48,13 +48,16 @@ app.post('/users', (req, res) => {
 app.get('/movies/:apikey', CheckApiKey, (req, res) => {
   res.send('MOVIES');
 });
+
 app
   .route('/articles')
   .get(getAllArticles)
   .post((req, res) => {
     res.send('added new articles');
   });
+ 
+// app.router('articles/:id').get().patch().delete()
 
 app.listen(3000, () => {
   console.log('server is running');
-});
+}); 
