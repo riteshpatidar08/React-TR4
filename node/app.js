@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const {getAllArticles} = require('./controllers/articlesControllers')
 //note create a logger middleware using  req.url and req.method  and time for log, create a logger file and add the logs in that file for each req .
 
 //NOTE => Middleware Are The Functions In The express which have access to the req,res and next middleware function  , middleware can run any code and  access request and response object and modify them, then this modification on the req  can be available for next middleware in the req-res cylce.
@@ -26,13 +27,13 @@ function test(req, res, next) {
   next();
 }
 
-function CheckApiKey(req,res,next){
-    const apiKey = req.params.apikey
-    if(apiKey=== 'test123'){
-        next()
-    }else{
-        res.send('Invalid Api key')
-    }
+function CheckApiKey(req, res, next) {
+  const apiKey = req.params.apikey;
+  if (apiKey === 'test123') {
+    next();
+  } else {
+    res.send('Invalid Api key');
+  }
 }
 
 app.get('/', test, (req, res) => {
@@ -44,10 +45,15 @@ app.post('/users', (req, res) => {
   console.log(req.body);
 });
 
-
-app.get('/movies/:apikey', CheckApiKey, (req,res)=>{
-    res.send('MOVIES')
-})
+app.get('/movies/:apikey', CheckApiKey, (req, res) => {
+  res.send('MOVIES');
+});
+app
+  .route('/articles')
+  .get(getAllArticles)
+  .post((req, res) => {
+    res.send('added new articles');
+  });
 
 app.listen(3000, () => {
   console.log('server is running');
