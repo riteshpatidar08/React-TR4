@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const userController = require('./controllers/userController.js')
 //NOTE connection mongodb with express using mongoose odm
-
+console.log(userController)
 const connectDb = async () => {
   try {
     const connection = await mongoose.connect(
@@ -17,13 +18,6 @@ const connectDb = async () => {
 
 connectDb();
 
-const userSchema = new mongoose.Schema({
-  name: { type: String },
-  age: { type: Number },
-  email: { type: String },
-  isActive: { type: Boolean, default: true },
-});
-const User = mongoose.model('user', userSchema);
 
 // const insertUser = async () => {
 //   const user = new User({
@@ -35,27 +29,9 @@ const User = mongoose.model('user', userSchema);
 //   console.log(data);
 // };
 // insertUser() //create fn for find data , update and delete
-app.get('/users', async (req, res) => {
-  try {
-    const users = await User.find();
-    if (users.length <= 0) {
-      //   res.status(404).json({ message: 'No user found' });
-      const error = new Error('No user found');
-      error.statusCode = 404
-      throw error;
-    }
-    res.status(200).json({
-      message: 'success',
-      data: users,
-      length: users.length,
-    });
-  } catch (error) {
-    res.status(error.statusCode).json({
-      message: 'failed',
-      data: error.message,
-    });
-  }
-});
+app.get('/users', userController.getAllUsers );
+
+
 app.listen(3000, () => {
   console.log('Server is running on 3000');
 });
