@@ -22,7 +22,7 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-exports.createUser = async () => {
+exports.createUser = async (req,res) => {
   try {
   } catch (error) {}
 };
