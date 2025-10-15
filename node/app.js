@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const userController = require('./controllers/userController.js')
+const userController = require('./controllers/userController.js');
+const userRouter = require('./routes/userRoutes.js')
 //NOTE connection mongodb with express using mongoose odm
-console.log(userController)
+console.log(userController);
 const connectDb = async () => {
   try {
     const connection = await mongoose.connect(
@@ -18,7 +19,6 @@ const connectDb = async () => {
 
 connectDb();
 
-
 // const insertUser = async () => {
 //   const user = new User({
 //     name: 'TEST',
@@ -29,8 +29,12 @@ connectDb();
 //   console.log(data);
 // };
 // insertUser() //create fn for find data , update and delete
-app.get('/users', userController.getAllUsers );
+// app.get('/users', userController.getAllUsers);
 
+//routes will go here for users
+app.use('/api/v1', userRouter)
+//route will go here for like blog resource
+//eg route =>  app.use('/api/v1' , blogRouter)
 
 app.listen(3000, () => {
   console.log('Server is running on 3000');
