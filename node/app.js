@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const userController = require('./controllers/userController.js');
 const userRouter = require('./routes/userRoutes.js')
+const User = require('./models/user.js')
 //NOTE connection mongodb with express using mongoose odm
 console.log(userController);
 const connectDb = async () => {
