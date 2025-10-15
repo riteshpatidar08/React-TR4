@@ -25,21 +25,24 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model('user', userSchema);
 
-const insertUser = async () => {
-  const user = new User({
-    name: 'TEST',
-    age: 34,
-    email: 'test@gmail.com',
-  });
-  const data = await user.save();
-  console.log(data);
-};
+// const insertUser = async () => {
+//   const user = new User({
+//     name: 'TEST',
+//     age: 34,
+//     email: 'test@gmail.com',
+//   });
+//   const data = await user.save();
+//   console.log(data);
+// };
 // insertUser() //create fn for find data , update and delete
 app.get('/users', async (req, res) => {
   try {
     const users = await User.find();
-    if (!users) {
-      res.status(404).json({ message: 'No user found' });
+    if (users.length <= 0) {
+      //   res.status(404).json({ message: 'No user found' });
+      const error = new Error('No user found');
+      error.statusCode = 404
+      throw error;
     }
     res.status(200).json({
       message: 'success',
@@ -47,7 +50,7 @@ app.get('/users', async (req, res) => {
       length: users.length,
     });
   } catch (error) {
-    res.status(500).json({
+    res.status(error.statusCode).json({
       message: 'failed',
       data: error.message,
     });
