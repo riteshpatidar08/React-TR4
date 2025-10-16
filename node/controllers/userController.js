@@ -22,7 +22,7 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-exports.createUser = async (req,res) => {
+exports.createUser = async (req, res) => {
   try {
   } catch (error) {}
 };
@@ -43,24 +43,24 @@ exports.getAUser = async (req, res) => {
   }
 };
 
-//delete and update 
-exports.updateUser = async(req,res)=> {
+//delete and update
+exports.updateUser = async (req, res) => {
   try {
-    const id = req.params.id ;
-    const {name} = req.body ;
-    const user = await User.findByIdAndUpdate(id, {name}) ;
-    if(!user){
-      const error = new Error('No user found')
-      error.statusCode = 404 ;
-      throw error
+    const id = req.params.id;
+    const { name } = req.body;
+    const user = await User.findByIdAndUpdate(id, { name }, { new: true });
+    if (!user) {
+      const error = new Error('No user found');
+
+      throw error;
     }
     res.status(201).json({
-      message  :"user updated successfully",
-      user
-    })
+      message: 'user updated successfully',
+      user,
+    });
   } catch (error) {
-    res.status(error.statusCode).json({
-      message : error.message
-    })
+    res.status(500).json({
+      message: error.message,
+    });
   }
-}
+};
