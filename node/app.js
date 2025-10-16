@@ -35,6 +35,7 @@ connectDb();
 
 //routes will go here for users
 app.use('/api/v1', userRouter)
+app.use('/api/v1/auth' , require('./routes/authRoutes.js'))
 //route will go here for like blog resource
 //eg route =>  app.use('/api/v1' , blogRouter)
 
