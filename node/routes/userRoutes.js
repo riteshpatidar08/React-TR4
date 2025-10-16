@@ -12,4 +12,7 @@ router.post('/users' , userController.createUser)
 //getUserById 
 router.get('/users/:id', userController.getAUser)
 
+//update a user 
+router.put('/user/:id' , userController.updateUser)
+
 module.exports = router
