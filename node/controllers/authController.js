@@ -1,5 +1,5 @@
 const User = require('./../models/user.js');
-
+const bcrypt = require('bcrypt')
 exports.signUp = async (req, res) => {
   try {
     const { email, name, password } = req.body;
@@ -34,7 +34,14 @@ exports.login = async(req,res) => {
       throw error
     }
     console.log(user)
+   const isPasswordMatch =  await bcrypt.compare(password , user.password)
+   if(!isPasswordMatch){
+    const error = new Error('Password donot match')
+    throw error
+   }
   } catch (error) {
-    
+    res.status(500).json({
+      message : error.message
+    })
   }
 }
