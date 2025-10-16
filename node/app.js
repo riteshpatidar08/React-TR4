@@ -1,10 +1,12 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
 const userController = require('./controllers/userController.js');
-const userRouter = require('./routes/userRoutes.js')
-const User = require('./models/user.js')
-app.use(express.json())
+const userRouter = require('./routes/userRoutes.js');
+const User = require('./models/user.js');
+app.use(express.json());
+app.use(cors());
 //NOTE connection mongodb with express using mongoose odm
 console.log(userController);
 const connectDb = async () => {
@@ -34,8 +36,8 @@ connectDb();
 // app.get('/users', userController.getAllUsers);
 
 //routes will go here for users
-app.use('/api/v1', userRouter)
-app.use('/api/v1/auth' , require('./routes/authRoutes.js'))
+app.use('/api/v1', userRouter);
+app.use('/api/v1/auth', require('./routes/authRoutes.js'));
 //route will go here for like blog resource
 //eg route =>  app.use('/api/v1' , blogRouter)
 
