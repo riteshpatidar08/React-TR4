@@ -41,7 +41,7 @@ exports.login = async(req,res) => {
     throw error
    }
 //generate token if password is matched
-const token = jwt.sign({name:user.name},'this_is_secret' , {expiresIn : '1d'})
+const token = jwt.sign({name:user.name,role : user.role},'this_is_secret' , {expiresIn : '1d'})
 console.log(token)
 res.status(200).json({
   message : "Login Successfull" ,

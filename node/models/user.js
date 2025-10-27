@@ -13,6 +13,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: [6, 'Password is too short'],
   },
+  role : {
+  type: String,
+  enum : ['user','admin'],
+  default  : 'user'
+  },
   isActive: { type: Boolean, default: true },
   lastLogin: { type: Date },
   createdAt: { type: Date, default: Date.now() },
