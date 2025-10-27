@@ -1,4 +1,5 @@
 const User = require('./../models/user.js');
+const cloudinary = require('../config/cloudinary.js')
 
 exports.getAllUsers = async (req, res , next) => {
   try {
@@ -24,7 +25,10 @@ exports.getAllUsers = async (req, res , next) => {
 exports.createUser = async (req, res) => {
   try {
     console.log(req.file)
-    const user = await User.create({...req.body, avatar : req.file.path}) ;
+
+    const result = await cloudinary.uploader.upload(req.file.path)
+    console.log(result)
+    const user = await User.create({...req.body, avatar : result.secure_url}) ;
     res.status(201).json({
       message : 'user created',
       user
