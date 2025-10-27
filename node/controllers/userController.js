@@ -1,8 +1,9 @@
 const User = require('./../models/user.js');
 
-exports.getAllUsers = async (req, res) => {
+exports.getAllUsers = async (req, res , next) => {
   try {
-    const users = await User.find();
+    console.log(req.query)
+    const users = await User.find({role : req.query.role});
     if (users.length <= 0) {
       //   res.status(404).json({ message: 'No user found' });
       const error = new Error('No user found');
@@ -15,16 +16,15 @@ exports.getAllUsers = async (req, res) => {
       length: users.length,
     });
   } catch (error) {
-    res.status(error.statusCode).json({
-      message: 'failed',
-      data: error.message,
-    });
+  next(error)
+   
   }
 };
 
 exports.createUser = async (req, res) => {
   try {
-    const user = await User.create(req.body) ;
+    console.log(req.file)
+    const user = await User.create({...req.body, avatar : req.file.path}) ;
     res.status(201).json({
       message : 'user created',
       user

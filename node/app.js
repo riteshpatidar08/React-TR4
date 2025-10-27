@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const userController = require('./controllers/userController.js');
 const userRouter = require('./routes/userRoutes.js');
 const User = require('./models/user.js');
+const errorHandler = require('./middlewares/errorHandler.js');
 app.use(express.json());
 app.use(cors());
 dotenv.config()
@@ -42,7 +43,7 @@ app.use('/api/v1', userRouter);
 app.use('/api/v1/auth', require('./routes/authRoutes.js'));
 //route will go here for like blog resource
 //eg route =>  app.use('/api/v1' , blogRouter)
-
+app.use(errorHandler)
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on ${process.env.PORT}`);
 });

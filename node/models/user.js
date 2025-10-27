@@ -8,6 +8,9 @@ const userSchema = new mongoose.Schema({
     maxlength: [30, 'Name is too long'],
   },
   email: { type: String, unqiue: true, required: true },
+  avatar : {
+    type : String
+  },
   password: {
     type: String,
     required: true,
