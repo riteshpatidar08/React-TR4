@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const dotenv = require('dotenv')
 const mongoose = require('mongoose');
 const userController = require('./controllers/userController.js');
 const userRouter = require('./routes/userRoutes.js');
 const User = require('./models/user.js');
 app.use(express.json());
 app.use(cors());
+dotenv.config()
 //NOTE connection mongodb with express using mongoose odm
 console.log(userController);
 const connectDb = async () => {
@@ -41,8 +43,8 @@ app.use('/api/v1/auth', require('./routes/authRoutes.js'));
 //route will go here for like blog resource
 //eg route =>  app.use('/api/v1' , blogRouter)
 
-app.listen(3000, () => {
-  console.log('Server is running on 3000');
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on ${process.env.PORT}`);
 });
 
 //NUMBER => 34 ,
@@ -52,3 +54,14 @@ app.listen(3000, () => {
 //null => null ,
 //objectId =>
 //object : {name : "TEST"}
+
+
+
+
+
+//NOTE use cloudinary for file upload ,
+//NOTE first check how to handle multipart form data on the ui when you take files from ui , multipart form data is the data with files + text .
+//NOTE first decide the roles and their functionalities , decides the models fields , 
+//NOTE divide the project into resources for backend api creation eg for restaurent management we have resources like tables ,  users can be customers or admin based on the roles create different ui , menu items , orders etc  decide their models and start building api's
+
+//eg pagination , infinite scrolling
